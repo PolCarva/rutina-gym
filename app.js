@@ -128,7 +128,7 @@ function guideHTML(){return `<section class="hero"><div class="eyebrow">Versión
 <li><strong>Usar con cuidado:</strong> press + laterales, remo + curl, jalón + curl.</li>
 <li><strong>Evitar como base:</strong> press + press, curl + curl, RDL + curl femoral, Smith + prensa.</li></ul></section>`}
 
-function settingsHTML(){return `<section class="section card settings"><h2>Plan semanal</h2><p>Elegí qué entrenamiento toca cada día. Se guarda en este celular.</p>${['mon','tue','wed','thu','fri','sat','sun'].map(d=>`<div class="setting-row"><label>${DAY_LABELS[d]}</label><select data-day="${d}">${OPTIONS.map(([v,l])=>`<option value="${v}" ${schedule[d]===v?'selected':''}>${l}</option>`).join('')}</select></div>`).join('')}</section>${helpHTML()}`}
+function settingsHTML(){return `<section class="section card settings"><h2>Plan semanal</h2><p>Elegí qué entrenamiento toca cada día. Se guarda en este celular.</p><button class="copy-btn full" data-copy-all>Copiar toda la rutina</button>${['mon','tue','wed','thu','fri','sat','sun'].map(d=>`<div class="setting-row"><label>${DAY_LABELS[d]}</label><select data-day="${d}">${OPTIONS.map(([v,l])=>`<option value="${v}" ${schedule[d]===v?'selected':''}>${l}</option>`).join('')}</select></div>`).join('')}</section>${helpHTML()}`}
 
 function timerHTML(){const rem=timerEnd?timerEnd-Date.now():0;const active=rem>0;return `<div class="timer"><div class="timer-time ${active?'':'idle'}" id="timerText">${active?format(rem):'0:00'}</div><div class="timer-buttons">${[60,75,90,120,180].map(s=>`<button data-timer="${s}">${s<60?s+'s':(s/60)+'m'}</button>`).join('')}<button class="stop" data-stop>Stop</button></div></div>`}
 
@@ -138,6 +138,34 @@ function bind(){
   document.querySelectorAll('[data-timer]').forEach(b=>b.onclick=()=>startTimer(Number(b.dataset.timer)));
   const stop=document.querySelector('[data-stop]');if(stop)stop.onclick=stopTimer;
 }
+
+function workoutText(id){
+  const w=WORKOUTS[id];
+  const lines=[w.label,w.subtitle,''];
+  w.blocks.forEach(b=>{
+    lines.push(b.title+(b.kind==='super'?' — Superserie':' — Por separado'));
+    b.ex.forEach((e,i)=>{lines.push(`${i+1}. ${e[0]} — ${e.slice(1).join(' · ')}`);});
+    if(b.rest) lines.push('Descanso: '+b.rest);
+    if(b.rounds) lines.push('Vueltas: '+b.rounds.join(' · '));
+    lines.push('');
+  });
+  return lines.join('\n').trim();
+}
+function allRoutineText(){
+  return ['RUTINA 4 DÍAS — ESTÉTICA + HIPERTROFIA','Lunes: Piernas · Martes: Push · Miércoles: Pull · Jueves: Fútbol/descanso · Viernes: Upper','',''+workoutText('PIERNAS'),'',''+workoutText('PUSH'),'',''+workoutText('PULL'),'',''+workoutText('UPPER')].join('\n');
+}
+async function copyText(text,button){
+  try{
+    await navigator.clipboard.writeText(text);
+    const old=button.textContent;button.textContent='Copiado ✓';button.classList.add('copied');
+    setTimeout(()=>{button.textContent=old;button.classList.remove('copied')},1400);
+  }catch{
+    const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();
+    const old=button.textContent;button.textContent='Copiado ✓';setTimeout(()=>button.textContent=old,1400);
+  }
+}
+function copyWorkout(id,button){copyText(workoutText(id),button)}
+function copyRoutine(button){copyText(allRoutineText(),button)}
 
 function startTimer(sec){timerEnd=Date.now()+sec*1000;saveJSON(TIMER_KEY,timerEnd);render()}
 function stopTimer(){timerEnd=null;localStorage.removeItem(TIMER_KEY);render()}
