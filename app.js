@@ -90,7 +90,7 @@ function render(){
 function contentHTML(id){
   if(id==='DESCANSO'||id==='FUTBOL') return `<section class="hero"><div class="eyebrow">${DAY_LABELS[todayKey()]}</div><h2>${id==='FUTBOL'?'Fútbol / descanso':'Descanso'}</h2><p>${id==='FUTBOL'?'El fútbol cuenta como fatiga de piernas, sprints, impacto y acondicionamiento; no como series de hipertrofia.':'Hoy no hay gym. Priorizá recuperación, comida y sueño.'}</p></section>${helpHTML()}`;
   const w=WORKOUTS[id];
-  return `<section class="hero"><div class="eyebrow">${tab==='hoy'?'Entrenamiento de hoy':'Rutina estable de referencia'}</div><h2>${w.label}</h2><p>${w.subtitle}</p></section>
+  return `<section class="hero"><div class="eyebrow">${tab==='hoy'?'Entrenamiento de hoy':'Rutina estable de referencia'}</div><h2>${w.label}</h2><p>${w.subtitle}</p><button class="copy-btn" data-copy-day="${id}">Copiar este día</button></section>
   ${w.blocks.map(blockHTML).join('')}${helpHTML()}`;
 }
 
@@ -136,6 +136,8 @@ function bind(){
   document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
   document.querySelectorAll('[data-day]').forEach(s=>s.onchange=()=>{schedule={...schedule,[s.dataset.day]:s.value};saveJSON(SCHEDULE_KEY,schedule);render()});
   document.querySelectorAll('[data-timer]').forEach(b=>b.onclick=()=>startTimer(Number(b.dataset.timer)));
+  document.querySelectorAll('[data-copy-day]').forEach(b=>b.onclick=()=>copyWorkout(b.dataset.copyDay,b));
+  const copyAll=document.querySelector('[data-copy-all]');if(copyAll)copyAll.onclick=()=>copyRoutine(copyAll);
   const stop=document.querySelector('[data-stop]');if(stop)stop.onclick=stopTimer;
 }
 
