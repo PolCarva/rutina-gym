@@ -80,7 +80,7 @@ function todayKey(){return DAYS[new Date().getDay()]}
 function render(){
   const current = tab==='hoy'?schedule[todayKey()]:({d1:'PIERNAS',d2:'PUSH',d3:'PULL',d4:'UPPER'}[tab]);
   document.getElementById('app').innerHTML=`<main class="app">
-    <header class="header"><div><div class="eyebrow">Estética + hipertrofia</div><h1 class="title">Mi Rutina</h1></div><div class="today">${DAY_LABELS[todayKey()]}</div></header>
+    <header class="header"><div><div class="eyebrow">Estética + hipertrofia</div><h1 class="title">Mi Rutina</h1></div><div class="header-actions"><div class="today">${DAY_LABELS[todayKey()]}</div><button class="copy-all-top" data-copy-all aria-label="Copiar toda la rutina">Copiar semana</button></div></header>
     <nav class="tabs">${[['hoy','Hoy'],['d1','Día 1'],['d2','Día 2'],['d3','Día 3'],['d4','Día 4'],['guia','Guía'],['ajustes','Ajustes']].map(([id,l])=>`<button class="tab ${tab===id?'active':''}" data-tab="${id}">${l}</button>`).join('')}</nav>
     ${tab==='ajustes'?settingsHTML():tab==='guia'?guideHTML():contentHTML(current)}
   </main><div class="timer-wrap">${timerHTML()}</div>`;
