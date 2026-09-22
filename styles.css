@@ -32,3 +32,5 @@ button{cursor:pointer}
 @media (min-width:700px){.app{padding-top:30px}.title{font-size:34px}}
 
 .copy-btn{margin-top:16px;min-height:42px;border:1px solid rgba(102,227,143,.35);border-radius:12px;padding:0 14px;background:rgba(102,227,143,.12);color:var(--primary);font-weight:800;font-size:13px;transition:.18s ease}.copy-btn:active{transform:scale(.98)}.copy-btn.copied{background:var(--primary);color:#0b1a10}.copy-btn.full{width:100%;margin:4px 0 12px;min-height:46px}
+
+.header-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.copy-all-top{min-height:34px;border:1px solid rgba(102,227,143,.35);border-radius:10px;padding:0 10px;background:rgba(102,227,143,.12);color:var(--primary);font-weight:800;font-size:11px;white-space:nowrap}.copy-all-top:active{transform:scale(.97)}.copy-all-top.copied{background:var(--primary);color:#0b1a10}
