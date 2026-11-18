@@ -1,73 +1,30 @@
 const WORKOUTS = {
-  PIERNAS:{label:'DÍA 1 — PIERNAS',subtitle:'Tren inferior · 50–60 min',blocks:[
-    {title:'Bloque 1',kind:'solo',ex:[
-      ['Sentadilla Smith','3×6–10','RIR 2 / 2 / 1–2','Descanso 2–3 min','Tempo 2-0-X','Rango completo tolerable']
-    ]},
-    {title:'Bloque 2',kind:'solo',ex:[
-      ['Peso muerto rumano','3×6–10','RIR 2 / 2 / 1','Descanso 2–3 min','Tempo 3-0-1','Cadera atrás · rodillas levemente flexionadas · columna estable']
-    ]},
-    {title:'Bloque 3',kind:'solo',ex:[
-      ['Prensa','2×10–15','RIR 1–2','Descanso 90–120 s','Profundidad alta manteniendo pelvis y espalda estables']
-    ]},
-    {title:'Bloque 4',kind:'super',rest:'75–90 s después de ambos',ex:[
-      ['Curl femoral sentado','3×10–15','RIR 1–2'],
-      ['Extensión de cuádriceps','3×10–15','RIR 1–2','Dropset opcional: última serie, -20/25% peso']
-    ]},
-    {title:'Bloque 5',kind:'solo',ex:[
-      ['Gemelos de pie o en prensa (rodilla extendida)','3×10–20','RIR 0–2','Descanso 60–75 s','Pausa breve en máxima dorsiflexión · no rebotar']
-    ]}
-  ]},
-
-  PUSH:{label:'DÍA 2 — PUSH',subtitle:'Pecho superior, pecho, deltoide lateral y tríceps · 45–55 min',blocks:[
-    {title:'Bloque 1',kind:'solo',ex:[
-      ['Press inclinado Smith (20–30°)','3×6–10','RIR 2 / 2 / 1','Descanso 2–3 min','Tempo 2-0-X','Prioridad estética: pecho superior'],
-      ['Press banca plano con barra','3×6–10','RIR 1–2','Descanso 2–3 min','Tempo 2-0-X','Va segundo: priorizamos pecho superior, no 1RM de banca']
-    ]},
-    {title:'Bloque 2',kind:'super',rest:'60–90 s después de ambos',rounds:['Vuelta 1: ambos','Vuelta 2: ambos','Vuelta 3: solo tríceps'],ex:[
-      ['Pec Deck','2×12–15','RIR 1','Estiramiento controlado'],
-      ['Extensión de tríceps overhead con cuerda','3×10–15','RIR 1–2']
-    ]},
-    {title:'Bloque 3',kind:'solo',ex:[
-      ['Elevación lateral en polea','4×12–20','RIR 1 / 1 / 1 / 0–1','Descanso 45–60 s','Dropset opcional: última serie, -20/25% peso']
-    ]}
-  ]},
-
-  PULL:{label:'DÍA 3 — PULL',subtitle:'Anchura + espesor de espalda, deltoide posterior y bíceps · 45–55 min',blocks:[
-    {title:'Bloque 1',kind:'solo',ex:[
-      ['Jalón al pecho','3×8–12','RIR 2 / 2 / 1','Descanso 2 min','Agarre cómodo, aprox. hombros o apenas más ancho'],
-      ['Remo con pecho apoyado','3×8–12','RIR 2 / 2 / 1','Descanso 2 min','Sin impulso del torso']
-    ]},
-    {title:'Bloque 2',kind:'super',rest:'60–90 s después de ambos',ex:[
-      ['Reverse Pec Deck','3×12–20','RIR 1–2'],
-      ['Curl inclinado con mancuernas','3×8–12','RIR 1–2']
-    ]},
-    {title:'Bloque 3',kind:'super',rest:'60–75 s después de ambos',ex:[
-      ['Pullover en polea / jalón brazos rectos','2×10–15','RIR 1–2'],
-      ['Curl en polea','2×10–15','RIR 1','Dropset opcional: última serie, -20/25% peso']
-    ]}
-  ]},
-
-  UPPER:{label:'DÍA 4 — UPPER',subtitle:'Segundo estímulo de torso · alta densidad · 45–55 min',blocks:[
-    {title:'Bloque 1',kind:'super',rest:'Press → 30–45 s → Jalón → 90–120 s → repetir',ex:[
-      ['Press convergente ligeramente inclinado (15–30°)','3×8–12','RIR 1–2'],
-      ['Jalón unilateral','3×8–12 por lado','RIR 1–2']
-    ]},
-    {title:'Bloque 2',kind:'super',rest:'75–90 s después de ambos',ex:[
-      ['Remo en máquina','3×8–12','RIR 1–2'],
-      ['Elevaciones laterales','3×12–20','RIR 1–2','Dropset opcional: última serie']
-    ]},
-    {title:'Bloque 3',kind:'super',rest:'60–75 s después de ambos',ex:[
-      ['Curl en polea','3×10–15','RIR 1–2'],
-      ['Tríceps con cuerda','3×10–15','RIR 1–2']
-    ]}
-  ]}
+ A:{label:'DÍA 1 — FULL BODY A',subtitle:'Lunes · Cuádriceps + pecho · 50–60 min',blocks:[
+ {title:'Bloque 1',kind:'solo',ex:[['Sentadilla Smith','3×6–10','RIR 2','Descanso 2–3 min'],['Press inclinado Smith','3×6–10','RIR 2 / 2 / 1','Descanso 2–3 min'],['Jalón al pecho','3×8–12','RIR 1–2','Descanso 2 min']]},
+ {title:'Bloque 2',kind:'super',rest:'60–90 s después de ambos',ex:[['Extensión de cuádriceps','2×10–15','RIR 1–2'],['Elevación lateral en polea','2×12–20','RIR 1']]},
+ {title:'Bloque 3',kind:'solo',ex:[['Gemelos de pie','2×10–20','RIR 0–2','Descanso 60–75 s']]}]},
+ B:{label:'DÍA 2 — FULL BODY B',subtitle:'Martes · Espalda + cadena posterior · 50–60 min',blocks:[
+ {title:'Bloque 1',kind:'solo',ex:[['Peso muerto rumano','3×6–10','RIR 2 / 2 / 1','Descanso 2–3 min'],['Remo con pecho apoyado','3×8–12','RIR 1–2','Descanso 2 min']]},
+ {title:'Bloque 2',kind:'super',rest:'75–90 s después de ambos',ex:[['Press convergente inclinado','2×8–12','RIR 1–2'],['Curl femoral sentado','2×10–15','RIR 1–2']]},
+ {title:'Bloque 3',kind:'super',rest:'60–90 s después de ambos',ex:[['Curl inclinado con mancuernas','3×8–12','RIR 1–2'],['Tríceps overhead con cuerda','3×10–15','RIR 1–2']]}]},
+ C:{label:'DÍA 3 — FULL BODY C',subtitle:'Miércoles · Torso dominante · 45–55 min',blocks:[
+ {title:'Bloque 1',kind:'super',rest:'90–120 s después de ambos; priorizá rendimiento',ex:[['Press banca plano con barra','3×6–10','RIR 1–2'],['Jalón unilateral','3×8–12 por lado','RIR 1–2']]},
+ {title:'Bloque 2',kind:'super',rest:'60–90 s después de ambos',rounds:['Vueltas 1 y 2: ambos','Vuelta 3: solo Reverse Pec Deck'],ex:[['Pec Deck','2×12–15','RIR 1'],['Reverse Pec Deck','3×12–20','RIR 1–2']]},
+ {title:'Bloque 3',kind:'solo',ex:[['Elevaciones laterales en polea','3×12–20','RIR 0–2','Descanso 45–60 s']]},
+ {title:'Bloque 4',kind:'super',rest:'60–75 s después de ambos',ex:[['Curl en polea','2×10–15','RIR 1'],['Tríceps con cuerda','2×10–15','RIR 1']]}]},
+ D:{label:'DÍA 4 — FULL BODY D',subtitle:'Viernes · Piernas + torso · 50–60 min (estimado)',blocks:[
+ {title:'Bloque 1',kind:'solo',ex:[['Prensa','3×10–15','RIR 1–2','Descanso 90–120 s']]},
+ {title:'Bloque 2',kind:'super',rest:'75–90 s después de ambos',ex:[['Curl femoral sentado','2×10–15','RIR 1–2'],['Press convergente inclinado','2×8–12','RIR 1–2']]},
+ {title:'Bloque 3',kind:'super',rest:'75–90 s después de ambos',ex:[['Remo en máquina','3×8–12','RIR 1–2'],['Elevaciones laterales','2×12–20','RIR 1']]},
+ {title:'Bloque 4',kind:'super',rest:'60–75 s después de ambos',ex:[['Curl en polea','2×10–15','RIR 1'],['Tríceps con cuerda','2×10–15','RIR 1']]},
+ {title:'Bloque 5',kind:'solo',ex:[['Gemelos','2×10–20','RIR 0–2','Descanso 60–75 s']]}]}
 };
 
 const DAYS=['sun','mon','tue','wed','thu','fri','sat'];
 const DAY_LABELS={mon:'Lunes',tue:'Martes',wed:'Miércoles',thu:'Jueves',fri:'Viernes',sat:'Sábado',sun:'Domingo'};
-const DEFAULT={mon:'PIERNAS',tue:'PUSH',wed:'PULL',thu:'FUTBOL',fri:'UPPER',sat:'DESCANSO',sun:'DESCANSO'};
-const OPTIONS=[['PIERNAS','Día 1 · Piernas'],['PUSH','Día 2 · Push'],['PULL','Día 3 · Pull'],['UPPER','Día 4 · Upper'],['FUTBOL','Fútbol/Descanso'],['DESCANSO','Descanso']];
-const SCHEDULE_KEY='gym.schedule.v2';
+const DEFAULT={mon:'A',tue:'B',wed:'C',thu:'DESCANSO',fri:'D',sat:'DESCANSO',sun:'DESCANSO'};
+const OPTIONS=[['A','Día 1 · Full Body A'],['B','Día 2 · Full Body B'],['C','Día 3 · Full Body C'],['D','Día 4 · Full Body D'],['FUTBOL','Fútbol'],['DESCANSO','Descanso']];
+const SCHEDULE_KEY='gym.schedule.v3';
 const TIMER_KEY='gym.timer.v1';
 let tab='hoy';
 let schedule=loadJSON(SCHEDULE_KEY,DEFAULT);
@@ -78,7 +35,7 @@ function saveJSON(key,val){try{localStorage.setItem(key,JSON.stringify(val))}cat
 function todayKey(){return DAYS[new Date().getDay()]}
 
 function render(){
-  const current = tab==='hoy'?schedule[todayKey()]:({d1:'PIERNAS',d2:'PUSH',d3:'PULL',d4:'UPPER'}[tab]);
+  const current = tab==='hoy'?schedule[todayKey()]:({d1:'A',d2:'B',d3:'C',d4:'D'}[tab]);
   document.getElementById('app').innerHTML=`<main class="app">
     <header class="header"><div><div class="eyebrow">Estética + hipertrofia</div><h1 class="title">Mi Rutina</h1></div><div class="header-actions"><div class="today">${DAY_LABELS[todayKey()]}</div><button class="copy-all-top" data-copy-all aria-label="Copiar toda la rutina">Copiar semana</button></div></header>
     <nav class="tabs">${[['hoy','Hoy'],['d1','Día 1'],['d2','Día 2'],['d3','Día 3'],['d4','Día 4'],['guia','Guía'],['ajustes','Ajustes']].map(([id,l])=>`<button class="tab ${tab===id?'active':''}" data-tab="${id}">${l}</button>`).join('')}</nav>
@@ -110,15 +67,15 @@ function helpHTML(){return `<section class="section card help"><h3>Reglas rápid
 
 function guideHTML(){return `<section class="hero"><div class="eyebrow">Versión base estable</div><h2>Cómo progresar sin cambiar por cambiar</h2><p>Solo modificar ejercicios por rendimiento, recuperación, molestias, equipamiento, preferencia fuerte o cambio de prioridad.</p></section>
 <section class="section card help"><h3>Distribución semanal</h3><ul>
-<li><strong>Lunes:</strong> Día 1 · Piernas</li><li><strong>Martes:</strong> Día 2 · Push</li><li><strong>Miércoles:</strong> Día 3 · Pull</li><li><strong>Jueves:</strong> Fútbol / descanso</li><li><strong>Viernes:</strong> Día 4 · Upper</li><li><strong>Sábado/Domingo:</strong> descanso</li>
-<li>Piernas va el lunes para dejar ~72 h antes del fútbol.</li></ul></section>
+<li><strong>Lunes:</strong> Full Body A</li><li><strong>Martes:</strong> Full Body B</li><li><strong>Miércoles:</strong> Full Body C</li><li><strong>Jueves:</strong> Descanso / fútbol opcional</li><li><strong>Viernes:</strong> Full Body D</li><li><strong>Sábado/Domingo:</strong> descanso</li>
+<li>Las piernas se distribuyen entre lunes, martes y viernes; miércoles es torso dominante.</li></ul></section>
 <section class="section card help"><h3>Doble progresión</h3><ul>
 <li>Mantené peso hasta alcanzar el tope del rango en todas las series con técnica, ROM y RIR objetivo.</li>
 <li>Después subí el incremento mínimo disponible y volvé a la zona baja/media del rango.</li>
 <li>Orientativo: tren superior +2–5%; tren inferior +2,5–5%.</li>
 <li>Registrá cada serie efectiva como <strong>peso × reps @ RIR</strong>.</li></ul></section>
 <section class="section card help"><h3>Volumen semanal aprox.</h3><ul>
-<li>Pecho: ~11 series directas</li><li>Espalda/dorsales: ~14</li><li>Deltoide lateral: 7 + dropsets opcionales</li><li>Deltoide posterior: 3 + remos indirectos</li><li>Bíceps: 8 directas + tirones</li><li>Tríceps: 6 directas + presses</li><li>Cuádriceps: 8 + fútbol como fatiga</li><li>Isquios: 6 + fútbol como fatiga</li><li>Gemelos: 3 directas + carga deportiva</li></ul></section>
+<li>Pecho: ~12 series directas</li><li>Espalda/dorsales: ~12</li><li>Deltoide lateral: 7 + dropsets opcionales</li><li>Deltoide posterior: 3 + remos indirectos</li><li>Bíceps: 7 directas + tirones</li><li>Tríceps: 7 directas + presses</li><li>Cuádriceps: 8</li><li>Isquios: 7</li><li>Gemelos: 4 directas</li></ul></section>
 <section class="section card help"><h3>Cuándo cambiar un ejercicio</h3><ul>
 <li>Dolor o molestias persistentes.</li><li>Sin progreso durante varias semanas tras revisar técnica, volumen y recuperación.</li><li>El patrón no se adapta bien a tu anatomía.</li><li>Falta equipamiento.</li><li>Existe una alternativa que disfrutás claramente más y cumple la misma función.</li><li>Si funciona y progresa, mantenelo normalmente 6–10+ semanas.</li></ul></section>
 <section class="section card help"><h3>Deload</h3><ul>
@@ -137,7 +94,7 @@ function bind(){
   document.querySelectorAll('[data-day]').forEach(s=>s.onchange=()=>{schedule={...schedule,[s.dataset.day]:s.value};saveJSON(SCHEDULE_KEY,schedule);render()});
   document.querySelectorAll('[data-timer]').forEach(b=>b.onclick=()=>startTimer(Number(b.dataset.timer)));
   document.querySelectorAll('[data-copy-day]').forEach(b=>b.onclick=()=>copyWorkout(b.dataset.copyDay,b));
-  const copyAll=document.querySelector('[data-copy-all]');if(copyAll)copyAll.onclick=()=>copyRoutine(copyAll);
+  document.querySelectorAll('[data-copy-all]').forEach(b=>b.onclick=()=>copyRoutine(b));
   const stop=document.querySelector('[data-stop]');if(stop)stop.onclick=stopTimer;
 }
 
@@ -154,7 +111,9 @@ function workoutText(id){
   return lines.join('\n').trim();
 }
 function allRoutineText(){
-  return ['RUTINA 4 DÍAS — ESTÉTICA + HIPERTROFIA','Lunes: Piernas · Martes: Push · Miércoles: Pull · Jueves: Fútbol/descanso · Viernes: Upper','',''+workoutText('PIERNAS'),'',''+workoutText('PUSH'),'',''+workoutText('PULL'),'',''+workoutText('UPPER')].join('\n');
+ const days=['mon','tue','wed','thu','fri','sat','sun'];
+ const plan=days.map(d=>DAY_LABELS[d]+': '+(WORKOUTS[schedule[d]]?.label||(schedule[d]==='FUTBOL'?'Fútbol':'Descanso')));
+ return ['RUTINA 4 DÍAS — FULL BODY CON ÉNFASIS ROTATIVO',...plan,'',...['A','B','C','D'].flatMap(id=>[workoutText(id),''])].join('\n').trim();
 }
 async function copyText(text,button){
   try{
